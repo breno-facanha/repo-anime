@@ -11,5 +11,6 @@ sequelize.sync({ force: false })
     });
 
 module.exports = {
-    Animes
+    Animes,
+    Users
 };
