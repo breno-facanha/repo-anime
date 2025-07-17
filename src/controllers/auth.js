@@ -42,6 +42,18 @@ async function login(req, res){
     
 }
 
+function profile(req, res) {
+    const user = req.user;
+
+    res.send({
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        role: user.role
+    });
+}
+
 module.exports = { 
-    login
+    login,
+    profile
 }

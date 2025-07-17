@@ -13,7 +13,7 @@ const Animes = sequelize.define('Animes', {
     description: {
         type: DataTypes.TEXT,
     },
-    ratting: {
+    rating: {
         type: DataTypes.FLOAT,
         validate: {
             min: 0,
