@@ -7,7 +7,7 @@ const Sentry = require("./src/config/sentry");
 require('./src/models')
 
 const app = express();
-const port = 3200;
+const port = process.env.PORT || 3200
 const cors = require('cors');
 
 app.use(express.json());
@@ -22,11 +22,6 @@ app.get("/debug", function mainHandler(req, res) {
 });
 
 Sentry.setupExpressErrorHandler(app);
-// app.use(function onError(err, req, res, next) {
-//   res.statusCode = 500;
-//   res.end(res.sentry + "\n");
-// });
-
 
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
