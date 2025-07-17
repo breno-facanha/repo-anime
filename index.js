@@ -1,5 +1,7 @@
 const express = require('express');
 const animesRoutes = require('./src/routes/animes');
+const dotenv = require('dotenv');
+dotenv.config();
 const userRouter = require('./src/routes/users');
 const authRoutes = require('./src/routes/auth')
 const bcrypt = require('bcrypt');
