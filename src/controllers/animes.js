@@ -1,3 +1,4 @@
+const redis = require('../config/redis');
 const { Animes } = require('../models');
 
 async function createAnime(req, res){
@@ -20,8 +21,13 @@ async function createAnime(req, res){
 
 async function getAnimes(req, res) {
     try {
+        const cachedAnimes = await redis.get('animes');
+        if (cachedAnimes) {
+            return res.status(200).json(JSON.parse(cachedAnimes));
+        }
        const animes = await Animes.findAll();
-        res.status(200).json(animes); 
+       await redis.set('animes', JSON.stringify(animes), {EX: 60})
+       return res.status(200).json(animes); 
     } catch (error) {
         res.status(500).send({ error: error.message });
     }
