@@ -2,6 +2,23 @@ const redis = require('../config/redis');
 const { Animes } = require('../models');
 
 async function createAnime(req, res){
+     /*
+            #swagger.tags = ['Anime']
+            #swagger.summary = 'Criar Anime'
+            #swagger.description = 'Esse endpoint permite criar um novo anime. Somente administradores podem criar animes.'
+    */
+
+    /*  #swagger.requestBody = {
+            required: true,
+            content: {
+                "application/json": {
+                    schema: {
+                        $ref: "#/components/schemas/someBody"
+                    }  
+                }
+            }
+        } 
+    */
     const anime = req.body;
 
     if(req.user.role !== 'admin') {

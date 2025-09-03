@@ -1,6 +1,7 @@
 const sequelize = require('../config/database');
 const Animes = require('./animes');
 const Users = require('./users')
+const Messages = require('./messages');
 
 sequelize.sync({ force: false })
     .then(() => {
@@ -12,5 +13,6 @@ sequelize.sync({ force: false })
 
 module.exports = {
     Animes,
-    Users
+    Users,
+    Messages
 };

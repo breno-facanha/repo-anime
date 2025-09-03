@@ -1,0 +1,355 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.2",
+    "title": "MINHA API ANIME v#1",
+    "description": "Some description..."
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3200"
+    }
+  ],
+  "paths": {
+    "/animes": {
+      "post": {
+        "tags": [
+          "Anime"
+        ],
+        "summary": "Criar Anime",
+        "description": "Esse endpoint permite criar um novo anime. Somente administradores podem criar animes.",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/someBody"
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/users": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Returns a user by id",
+        "description": "This endpoint will return a user by id...",
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "password": {
+                    "example": "any"
+                  },
+                  "name": {
+                    "example": "any"
+                  },
+                  "email": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "example": "any"
+                  },
+                  "password": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/profile": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/messages": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "senderId": {
+                    "example": "any"
+                  },
+                  "content": {
+                    "example": "any"
+                  },
+                  "groupId": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/messages/{groupId}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "groupId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "someBody": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1"
+          },
+          "title": {
+            "type": "string",
+            "example": "yu-gi-oh"
+          },
+          "description": {
+            "type": "string",
+            "example": "Anime de cartas"
+          },
+          "rating": {
+            "type": "number",
+            "example": 4.5
+          },
+          "imageUrl": {
+            "type": "string",
+            "example": "http://image.com"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "description",
+          "rating",
+          "imageUrl"
+        ]
+      },
+      "someResponse": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Jhon Doe"
+          },
+          "age": {
+            "type": "number",
+            "example": 29
+          },
+          "diplomas": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "school": {
+                  "type": "string",
+                  "example": "XYZ University"
+                },
+                "year": {
+                  "type": "number",
+                  "example": 2020
+                },
+                "completed": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "internship": {
+                  "type": "object",
+                  "properties": {
+                    "hours": {
+                      "type": "number",
+                      "example": 290
+                    },
+                    "location": {
+                      "type": "string",
+                      "example": "XYZ Company"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "someEnum": {
+        "type": "string",
+        "enum": [
+          "red",
+          "yellow",
+          "green"
+        ]
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  }
+}

@@ -2,6 +2,12 @@ const { Users} = require('../models')
 
 
 async function createUser(req, res) {
+
+     /*
+            #swagger.tags = ['Users']
+            #swagger.summary = 'Returns a user by id'
+            #swagger.description = 'This endpoint will return a user by id...'
+        */
     
     try {
         await Users.create(req.body)

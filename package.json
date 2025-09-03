@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon ./src/index.js",
-    "start": "node ./src/index.js"
+    "start": "node ./src/index.js",
+    "swagger": "node swagger.js"
   },
   "keywords": [],
   "author": "",
@@ -13,15 +14,28 @@
   "dependencies": {
     "@sentry/node": "^9.35.0",
     "bcrypt": "^6.0.0",
+    "body-parser": "^2.2.0",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
     "pg": "^8.16.0",
     "redis": "^5.6.1",
-    "sequelize": "^6.37.7"
+    "sequelize": "^6.37.7",
+    "socket.io": "^4.8.1",
+    "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.10"
-  }
+    "nodemon": "^3.1.10",
+    "swagger-autogen": "^2.23.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/breno-facanha/repo-anime.git"
+  },
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/breno-facanha/repo-anime/issues"
+  },
+  "homepage": "https://github.com/breno-facanha/repo-anime#readme"
 }
